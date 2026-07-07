@@ -6,12 +6,13 @@
 # ============================================================
 
 # ── TELEGRAM ────────────────────────────────────────────────
-# Prefer env vars; fall back to literals so the bot still runs locally.
-# ponytail: the token below is already in git history — ROTATE it via @BotFather
-# and set TELEGRAM_BOT_TOKEN in your environment instead of editing this file.
+# Required environment variables (see .env.example)
 import os
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8575869948:AAEJl9qs163x24dsLyRQ-JZVBWKvqnmy-FY")  # from @BotFather
-TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "5392376464")  # your channel or user ID
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID")
+
+if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+    raise ValueError("TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID must be set in environment variables")
 
 # ── API KEYS ─────────────────────────────────────────────────
 # All APIs are free — no keys needed!

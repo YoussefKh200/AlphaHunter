@@ -36,8 +36,8 @@ requirements.txt
 aiohttp >= 3.9.0 (async HTTP client)
 asyncio >= 3.4.3 (async I/O)
 config/settings.py (CRITICAL CONFIG)
-TELEGRAM_BOT_TOKEN = "8575869948:AAEJl9qs163x24dsLyRQ-JZVBWKvqnmy-FY"
-TELEGRAM_CHAT_ID = "5392376464"
+TELEGRAM_BOT_TOKEN = (loaded from environment variable)
+TELEGRAM_CHAT_ID = (loaded from environment variable)
 Thresholds:
 MIN_ALPHA_SCORE = 60 (min to generate alert)
 ENTRY_SIGNAL_SCORE = 70 (full entry alert)
@@ -310,12 +310,12 @@ signals_log: Last 500 signals sent (NEW_TOKEN, ENTRY, EXIT)
 On startup, DataStore loads this file. Every 5 minutes, engine.py saves updated state.
 
 SECURITY & API KEYS
-Telegram Bot Token: Hardcoded in settings.py (⚠️ exposed)
-Telegram Chat ID: Hardcoded in settings.py (⚠️ exposed)
+Telegram Bot Token: Loaded from TELEGRAM_BOT_TOKEN environment variable
+Telegram Chat ID: Loaded from TELEGRAM_CHAT_ID environment variable
 Birdeye API Key: Optional (can be left blank for free tier)
 Solana RPC: Public endpoints (no auth required)
 Pump.fun / DexScreener: Free, no keys needed
-⚠️ Risk: API keys in settings.py should be moved to environment variables or .env file.
+✅ All secrets now loaded from environment variables (see .env.example)
 
 ASYNC ARCHITECTURE
 asyncio.gather() in engine.py runs 4 loops concurrently
